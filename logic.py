@@ -1,11 +1,11 @@
 import requests
-import geopy
 
 
-def get_data(access_token, name):
+def get_data(access_token: str, name: str):
+    """
+    Requests information about name with API access_token
+    """
     base_url = "https://api.twitter.com/"
-
-    #access_token = "AAAAAAAAAAAAAAAAAAAAAOypMwEAAAAAIMSAQdjAmRx0d%2BdGIegbvzRmk%2BE%3DSXvnauT1SbdxGbtHP72BZ0JRcDCai4Sh7MT2axIKPSomnLI3bY"
 
     search_headers = {
         'Authorization': 'Bearer {}'.format(access_token)
@@ -21,7 +21,10 @@ def get_data(access_token, name):
     return response.json()
 
 
-def extract_info(data):
+def extract_info(data: dict):
+    """
+    Extract location and screen_name of users
+    """
     check = []
     friends = []
     for elem in data['users']:

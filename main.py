@@ -13,6 +13,9 @@ def home():
 
 @app.route('/get', methods=['POST'])
 def get_data_from_html():
+    """
+    Gets information from server and create map
+    """
     name = request.form.get('screen_name')
     token = request.form.get('access_token')
     data = logic.get_data(token, name)
